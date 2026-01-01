@@ -32,9 +32,10 @@ openai==1.6.1
 # =============================
 # Vector DB / ML / RAG
 # =============================
-faiss-cpu==1.7.4
+faiss-cpu==1.13.2
 numpy==1.26.3
 scikit-learn==1.4.0
+
 
 # =============================
 # PDF / Document Processing
