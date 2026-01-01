@@ -31,20 +31,15 @@ def create_app():
     CORS(app)
 
     # ---------------- API BLUEPRINTS ----------------
-    # These are BACKEND APIs (NOT pages)
-# ---------------- API BLUEPRINTS ----------------
-# ---------------- API BLUEPRINTS ----------------
-
     app.register_blueprint(auth_bp, url_prefix="/auth")
     app.register_blueprint(quiz_bp, url_prefix="/quiz")
 
-# ✅ These blueprints already define their own prefixes
-    app.register_blueprint(student_bp)    # /students/*
-    app.register_blueprint(subject_bp)    # /subjects/*
+    # These blueprints already define their own prefixes
+    app.register_blueprint(student_bp)   # /students/*
+    app.register_blueprint(subject_bp)   # /subjects/*
 
-# Admin APIs
+    # Admin APIs
     app.register_blueprint(admin_bp, url_prefix="/admin")
-
 
     # ---------------- FRONTEND PAGES ----------------
     @app.route("/")
@@ -75,7 +70,6 @@ def create_app():
     def serve_admin_login():
         return send_from_directory("frontend/pages", "admin-login.html")
 
-    # ✅ THIS IS THE ADMIN DASHBOARD PAGE
     @app.route("/admin")
     def serve_admin_dashboard():
         return send_from_directory("frontend/pages", "admin.html")
@@ -104,10 +98,12 @@ def create_app():
     return app
 
 
-# ---------------- ENTRY POINT ----------------
+# ✅ THIS IS REQUIRED FOR GUNICORN
+app = create_app()
+
+
+# ---------------- LOCAL DEV ONLY ----------------
 if __name__ == "__main__":
     init_db()
     seed_initial_data()
-
-    app = create_app()
     app.run(host="0.0.0.0", port=5000, debug=True)
