@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz - Intelligence DCET Quiz Generator</title>
+  <link rel="stylesheet" href="/css/quiz.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-content">
+      <div class="header-brand">
+        <span class="header-brand-icon">&#x1F4DA;</span>
+        <span>Intelligence DCET</span>
+      </div>
+      <nav class="header-nav">
+        <a href="/dashboard" class="btn btn-secondary">Exit Quiz</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main-content">
+    <div class="container">
+      <div class="page-header">
+        <h1 class="page-title" id="quizTitle">Quiz</h1>
+      </div>
+
+      <!-- LOADING STATE -->
+      <div id="loadingState" class="quiz-container">
+        <div class="loading">
+          <div class="spinner"></div>
+          <p style="margin-top: 1rem;">Generating quiz questions using AI...</p>
+          <p style="color: var(--muted); font-size: 0.9rem;">
+            This may take a few moments
+          </p>
+        </div>
+      </div>
+
+      <!-- QUIZ CONTENT -->
+      <div id="quizContent" class="quiz-container hidden">
+        <div class="quiz-progress">
+          <span class="progress-text" id="progressText">0 of 0 answered</span>
+          <div class="progress-bar-container">
+            <div
+              class="progress-bar"
+              id="progressBar"
+              style="width: 0%"
+            ></div>
+          </div>
+        </div>
+
+        <div id="questionCard" class="question-card"></div>
+
+        <div class="quiz-nav">
+          <button id="prevBtn" class="btn btn-secondary" disabled>
+            &#8592; Previous
+          </button>
+          <button id="nextBtn" class="btn btn-primary">
+            Next &#8594;
+          </button>
+          <button id="submitBtn" class="btn btn-success hidden">
+            Submit Quiz
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/quiz.js"></script>
+</body>
+</html>

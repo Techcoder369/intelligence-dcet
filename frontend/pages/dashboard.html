@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Intelligence DCET Quiz Generator</title>
+  <link rel="stylesheet" href="/css/dashboard.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-content">
+      <div class="header-brand">
+        <span class="header-brand-icon">&#x1F4DA;</span>
+        <span class="header-brand-text">Intelligence DCET</span>
+      </div>
+
+      <nav class="header-nav">
+        <a href="/profile" class="profile-btn">
+          <span class="profile-avatar">&#x1F464;</span>
+          <span id="userName" class="profile-name">Student</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main-content">
+    <div class="container">
+      <section class="dashboard-header">
+        <h1 class="dashboard-title">Choose Your Subject</h1>
+        <p class="dashboard-subtitle">
+          Select a subject to start your DCET preparation
+        </p>
+      </section>
+
+      <!-- SUBJECT GRID (JS will replace loading card with real subjects) -->
+      <section id="subjectGrid" class="subject-grid">
+        <article class="subject-card loading-card">
+          <div class="spinner"></div>
+          <p>Loading subjects...</p>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

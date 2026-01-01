@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligence DCET Quiz Generator - Login</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+<div class="auth-container">
+    <div class="auth-card">
+
+        <!-- HEADER -->
+        <div class="auth-header">
+            <div class="auth-logo">📚</div>
+            <h1 class="auth-title">Intelligence DCET</h1>
+            <p class="auth-subtitle">Quiz Generator for Diploma Students</p>
+        </div>
+
+        <div id="alertContainer"></div>
+
+        <!-- ================= REGISTER ================= -->
+        <div id="registerStep">
+            <form id="registerForm">
+
+                <!-- Full Name -->
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" id="fullName" class="form-input"
+                           placeholder="Enter your full name" required>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="regEmail" class="form-input"
+                           placeholder="Enter your email" required>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="regPassword" class="form-input"
+                           placeholder="Create a password" required>
+                </div>
+
+                <!-- Mobile -->
+                <div class="form-group">
+                    <label class="form-label">Mobile Number</label>
+                    <input type="tel" id="phone" class="form-input"
+                           placeholder="Enter mobile number" required>
+                </div>
+
+                <!-- DCET REG -->
+                <div class="form-group">
+                    <label class="form-label">DCET Registration Number</label>
+                    <input type="text" id="regNo" class="form-input"
+                           placeholder="Enter DCET registration number" required>
+                </div>
+
+                <!-- College -->
+                <div class="form-group">
+                    <label class="form-label">College Name</label>
+                    <input type="text" id="college" class="form-input"
+                           placeholder="Enter college name" required>
+                </div>
+
+                <!-- SUBMIT -->
+                <button type="submit" class="btn btn-primary" style="width:100%;">
+                    Register
+                </button>
+
+                <p style="text-align:center; margin-top:1rem;">
+                    Already have an account?
+                    <a href="#" id="showLogin">Login here</a>
+                </p>
+
+            </form>
+        </div>
+
+        <!-- ================= LOGIN ================= -->
+        <div id="loginStep" class="hidden">
+            <form id="loginForm">
+
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="email" class="form-input"
+                           placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="password" class="form-input"
+                           placeholder="Enter your password" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width:100%;">
+                    Login
+                </button>
+
+                <p style="text-align:center; margin-top:1rem;">
+                    Don't have an account?
+                    <a href="#" id="showRegister">Register here</a>
+                </p>
+
+            </form>
+        </div>
+
+        <p style="text-align:center; margin-top:1.5rem; color:var(--gray-500);">
+            Admin? <a href="/admin-login">Login here</a>
+        </p>
+
+    </div>
+</div>
+
+<!-- JS -->
+<script src="/js/api.js"></script>
+<script src="/js/auth.js"></script>
+
+</body>
+</html>

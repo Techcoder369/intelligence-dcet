@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Intelligence DCET Quiz Generator</title>
+    <link rel="stylesheet" href="/css/admin.css">
+
+</head>
+<body>
+    <aside class="admin-sidebar">
+        <div class="admin-logo">
+            &#x1F4DA; DCET Admin
+        </div>
+        <ul class="admin-nav">
+            <li class="admin-nav-item">
+                <a href="#" class="admin-nav-link active" data-tab="dashboard">
+                    &#x1F4CA; Dashboard
+                </a>
+            </li>
+            <li class="admin-nav-item">
+                <a href="#" class="admin-nav-link" data-tab="subjects">
+                    &#x1F4DA; Subjects
+                </a>
+            </li>
+            <li class="admin-nav-item">
+                <a href="#" class="admin-nav-link" data-tab="upload">
+                    &#x1F4C4; Upload PDFs
+                </a>
+            </li>
+            <li class="admin-nav-item">
+                <a href="#" class="admin-nav-link" data-tab="documents">
+                    &#x1F4C1; Documents
+                </a>
+            </li>
+            <li class="admin-nav-item" style="margin-top: 2rem;">
+                <a href="#" class="admin-nav-link" id="adminLogout">
+                    &#x1F6AA; Logout
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <main class="admin-main">
+        <div id="dashboardSection" class="admin-section">
+            <div class="admin-header">
+                <h1 class="admin-title">Dashboard Overview</h1>
+            </div>
+
+            <div class="admin-cards">
+                <div class="admin-stat-card">
+                    <h3>Total Students</h3>
+                    <div class="value" id="totalStudents">0</div>
+                </div>
+                <div class="admin-stat-card">
+                    <h3>Total Quizzes</h3>
+                    <div class="value" id="totalQuizzes">0</div>
+                </div>
+                <div class="admin-stat-card">
+                    <h3>Flashcard Sessions</h3>
+                    <div class="value" id="totalFlashcards">0</div>
+                </div>
+                <div class="admin-stat-card">
+                    <h3>Documents</h3>
+                    <div class="value" id="totalDocuments">0</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 1rem;">Subject Statistics</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Quizzes</th>
+                            <th>Flashcards</th>
+                            <th>Documents</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subjectStatsTable">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="subjectsSection" class="admin-section hidden">
+            <div class="admin-header">
+                <h1 class="admin-title">Subject Management</h1>
+            </div>
+            <div id="subjectsList">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading subjects...</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="uploadSection" class="admin-section hidden">
+            <div class="admin-header">
+                <h1 class="admin-title">Upload Study Materials</h1>
+            </div>
+
+            <div class="card">
+                <div class="form-group">
+                    <label class="form-label">Select Subject</label>
+                    <select id="uploadSubject" class="form-input">
+                        <option value="">Select Subject</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Select Unit</label>
+                    <select id="uploadUnit" class="form-input" disabled>
+                        <option value="">Select Unit</option>
+                    </select>
+                </div>
+                
+                <div id="uploadZone" class="upload-zone">
+                    <div class="upload-icon">&#x1F4C4;</div>
+                    <p>Drag & drop PDF files here or click to browse</p>
+                </div>
+                <input type="file" id="fileInput" accept=".pdf" multiple style="display: none;">
+            </div>
+        </div>
+
+        <div id="documentsSection" class="admin-section hidden">
+            <div class="admin-header">
+                <h1 class="admin-title">Uploaded Documents</h1>
+            </div>
+
+            <div class="card">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Filename</th>
+                            <th>Subject</th>
+                            <th>Unit</th>
+                            <th>Chunks</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="documentsList">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>

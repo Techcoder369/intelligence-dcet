@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards - Intelligence DCET Quiz Generator</title>
+    <link rel="stylesheet" href="/css/flashcard.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="header-brand">
+                <span class="header-brand-icon">&#x1F4DA;</span>
+                <span>Intelligence DCET</span>
+            </div>
+            <nav class="header-nav">
+                <a href="/dashboard" class="btn btn-secondary">Exit</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title" id="flashcardTitle">Flashcards</h1>
+            </div>
+
+            <div id="loadingState" class="flashcard-container">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p style="margin-top: 1rem;">Generating flashcards using AI...</p>
+                    <p style="color: var(--gray-500); font-size: 0.9rem;">This may take a few moments</p>
+                </div>
+            </div>
+
+            <div id="flashcardContent" class="flashcard-container hidden">
+                <div class="quiz-progress" style="margin-bottom: 1.5rem;">
+                    <span class="progress-text" id="progressText">0 reviewed | 0 remaining</span>
+                </div>
+
+                <div id="flashcard" class="flashcard">
+                    <div class="flashcard-face flashcard-front">
+                        <div class="flashcard-label">Question</div>
+                        <div class="flashcard-content" id="frontContent"></div>
+                        <p style="margin-top: 2rem; color: var(--gray-400); font-size: 0.9rem;">Click to flip</p>
+                    </div>
+                    <div class="flashcard-face flashcard-back">
+                        <div class="flashcard-label">Answer</div>
+                        <div class="flashcard-content" id="backContent"></div>
+                    </div>
+                </div>
+
+                <div class="flashcard-actions">
+                    <button id="dontKnowBtn" class="flashcard-btn dont-know">
+                        &#10060; Don't Know
+                    </button>
+                    <button id="knowBtn" class="flashcard-btn know">
+                        &#10004; Know
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/flashcard.js"></script>
+</body>
+</html>

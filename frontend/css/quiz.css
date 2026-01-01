@@ -1,0 +1,534 @@
+/* =========================================
+   THEME
+========================================= */
+:root {
+  --primary: #6366f1;
+  --accent: #ec4899;
+  --accent-2: #22c55e;
+  --bg: #020617;
+  --card: rgba(15, 23, 42, 0.98);
+  --card-border: rgba(148, 163, 184, 0.55);
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --radius-lg: 26px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 26px 80px rgba(15, 23, 42, 0.95);
+  --shadow-strong: 0 32px 90px rgba(15, 23, 42, 1);
+  --blur: 22px;
+  --t-fast: 0.18s ease-out;
+  --t-med: 0.28s ease-out;
+}
+
+/* =========================================
+   RESET + BACKGROUND
+========================================= */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.18), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(236, 72, 153, 0.2), transparent 55%),
+    linear-gradient(135deg, #020617, #020617);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  background: linear-gradient(
+    90deg,
+    rgba(15, 23, 42, 0.96),
+    rgba(15, 23, 42, 0.9)
+  );
+  border-bottom: 1px solid var(--card-border);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.9rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.header-brand-icon {
+  font-size: 1.4rem;
+}
+
+.header-brand span:last-child {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.92rem;
+  background: linear-gradient(120deg, #38bdf8, #6366f1, #ec4899, #f97316);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+.btn {
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  padding: 0.55rem 1.3rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition:
+    background-position 0.45s ease,
+    transform var(--t-fast),
+    box-shadow var(--t-fast),
+    border-color var(--t-fast),
+    color var(--t-fast);
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 45%;
+  left: -45%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(248, 250, 252, 0.55),
+    transparent
+  );
+  opacity: 0;
+  transform: skewX(-18deg);
+  pointer-events: none;
+}
+
+.btn-primary {
+  background-image: linear-gradient(120deg, #6366f1, #0ea5e9, #22c55e);
+  background-size: 220% 100%;
+  color: #f9fafb;
+  box-shadow: 0 20px 50px rgba(37, 99, 235, 0.95);
+}
+
+.btn-secondary {
+  background: rgba(15, 23, 42, 0.96);
+  color: var(--text);
+  border-color: rgba(148, 163, 184, 0.7);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.9);
+}
+
+.btn-success {
+  background-image: linear-gradient(120deg, #22c55e, #4ade80, #6366f1);
+  background-size: 220% 100%;
+  color: #f9fafb;
+  box-shadow: 0 20px 50px rgba(22, 163, 74, 0.95);
+}
+
+.btn-primary:hover,
+.btn-success:hover {
+  background-position: 100% 0;
+  transform: translateY(-3px);
+  box-shadow: 0 26px 64px rgba(37, 99, 235, 1);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  background: rgba(15, 23, 42, 0.98);
+  border-color: rgba(191, 219, 254, 0.9);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 1);
+}
+
+.btn:hover::after {
+  opacity: 1;
+  animation: buttonShine 0.9s ease-out forwards;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* =========================================
+   MAIN LAYOUT
+========================================= */
+.main-content {
+  padding: 2.6rem 0 3.2rem;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.page-header {
+  margin-bottom: 1.5rem;
+}
+
+.page-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.page-title::after {
+  content: "";
+  display: block;
+  margin-top: 0.5rem;
+  width: 90px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6366f1, #0ea5e9, #ec4899);
+  box-shadow: 0 0 14px rgba(99, 102, 241, 0.8);
+}
+
+/* =========================================
+   QUIZ CONTAINER + LOADING
+========================================= */
+.quiz-container {
+  margin-top: 1.4rem;
+  padding: 1.8rem 1.9rem;
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.22), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(236, 72, 153, 0.22), transparent 55%),
+    var(--card);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(var(--blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
+  transform-origin: center;
+  transition: transform var(--t-med), box-shadow var(--t-med),
+    border-color var(--t-med), background 0.35s ease, filter var(--t-med);
+}
+
+.quiz-container:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-strong);
+  border-color: rgba(129, 140, 248, 0.95);
+  filter: saturate(1.05);
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 0.96rem;
+  color: var(--muted);
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 3px solid rgba(148, 163, 184, 0.5);
+  border-top-color: var(--accent);
+  animation: spin 0.8s linear infinite;
+}
+
+/* =========================================
+   PROGRESS
+========================================= */
+.quiz-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background-image: linear-gradient(120deg, #6366f1, #0ea5e9, #22c55e);
+  background-size: 200% 100%;
+  animation: progressPulse 2.4s ease-in-out infinite;
+}
+
+/* =========================================
+   QUESTION CARD
+========================================= */
+.question-card {
+  margin-top: 0.4rem;
+  padding: 1.6rem 1.5rem 1.4rem;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.2), transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(129, 140, 248, 0.22), transparent 60%),
+    rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.75);
+  box-shadow: 0 22px 60px rgba(15, 23, 42, 0.98);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInCard 0.4s ease-out;
+}
+
+.question-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(248, 250, 252, 0.18),
+    transparent
+  );
+  opacity: 0;
+  transform: translateX(-120%) skewX(-18deg);
+  pointer-events: none;
+}
+
+.question-card:hover::before {
+  opacity: 1;
+  animation: cardShine 0.9s ease-out forwards;
+}
+
+.question-number {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.question-text {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1.1rem;
+}
+
+/* =========================================
+   OPTIONS
+========================================= */
+.options-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.option-item {
+  position: relative;
+}
+
+/* clickable button used for options */
+.option-btn {
+  width: 100%;
+  text-align: left;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: rgba(15, 23, 42, 0.98);
+  color: var(--text);
+  padding: 0.8rem 1rem;
+  font-size: 0.92rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  transition: background var(--t-fast), border-color var(--t-fast),
+    transform var(--t-fast), box-shadow var(--t-fast);
+}
+
+.option-label-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  background: radial-gradient(circle at 30% 0%, #6366f1, #0ea5e9);
+}
+
+.option-text {
+  flex: 1;
+}
+
+.option-btn:hover {
+  background: rgba(30, 64, 175, 0.95);
+  border-color: rgba(129, 140, 248, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.97);
+}
+
+/* JS adds .selected / .correct / .incorrect */
+.option-btn.selected {
+  background: radial-gradient(circle at 0% 0%, #6366f1, #ec4899);
+  border-color: transparent;
+  box-shadow: 0 20px 52px rgba(129, 140, 248, 0.95);
+}
+
+.option-btn.correct {
+  background: radial-gradient(circle at 0% 0%, #22c55e, #4ade80);
+  border-color: transparent;
+}
+
+.option-btn.incorrect {
+  background: radial-gradient(circle at 0% 0%, #ef4444, #f97373);
+  border-color: transparent;
+}
+
+/* =========================================
+   QUIZ NAVIGATION
+========================================= */
+.quiz-nav {
+  margin-top: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+/* results card */
+.results-card {
+  text-align: center;
+}
+
+.score-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  margin: 0 auto 1.4rem;
+  border: 4px solid rgba(129, 140, 248, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.3), transparent 60%),
+    rgba(15, 23, 42, 0.98);
+  box-shadow: 0 26px 70px rgba(15, 23, 42, 1);
+}
+
+.score-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.score-label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes buttonShine {
+  0% {
+    left: -45%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+
+@keyframes progressPulse {
+  0%,
+  100% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardShine {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(140%) skewX(-18deg);
+  }
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+@media (max-width: 900px) {
+  .header-content {
+    padding-inline: 1.2rem;
+  }
+
+  .container {
+    padding-inline: 1.2rem;
+  }
+
+  .page-title {
+    font-size: 1.9rem;
+  }
+
+  .quiz-container {
+    padding: 1.5rem 1.4rem;
+  }
+}

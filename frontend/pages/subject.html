@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subject · Intelligence DCET</title>
+  <link rel="stylesheet" href="/css/subject.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <div class="header-brand">
+        <span class="header-brand-icon">📚</span>
+        <span class="header-brand-text">Intelligence DCET</span>
+      </div>
+
+      <nav class="header-nav">
+        <a href="/dashboard" class="header-link">Dashboard</a>
+        <a href="/profile" class="profile-btn">
+          <span class="profile-avatar">👤</span>
+          <span class="profile-name">Profile</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <header class="page-header">
+        <button type="button" class="back-btn" onclick="window.location.href='/dashboard'">
+          ←
+        </button>
+        <div>
+          <h1 class="page-title" id="subjectName">Subject name</h1>
+          <p class="page-subtitle">
+            Choose a unit, mode and difficulty to start practicing DCET questions.
+          </p>
+        </div>
+      </header>
+
+      <section class="selection-layout">
+        <!-- left: units -->
+        <section class="selection-card">
+          <div class="selection-header">
+            <h2 class="selection-title">Units</h2>
+            <p class="selection-helper">Pick one unit to focus on.</p>
+          </div>
+
+          <div id="unitGrid" class="unit-grid">
+            <div class="loading">
+              <div class="spinner"></div>
+              <p>Loading units…</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- right: mode + difficulty -->
+        <section class="selection-card">
+          <div class="selection-header">
+            <h2 class="selection-title">Practice setup</h2>
+            <p class="selection-helper">Configure how you want to learn.</p>
+          </div>
+
+          <div class="selection-section">
+            <label class="selection-label">Mode</label>
+            <div class="mode-grid">
+              <button class="mode-btn" data-mode="quiz" type="button">
+                <div class="mode-btn-icon">📝</div>
+                <div class="mode-btn-text">
+                  <div class="mode-btn-label">Quiz</div>
+                  <div class="mode-btn-subtitle">MCQ questions with scoring</div>
+                </div>
+              </button>
+
+              <button class="mode-btn" data-mode="flashcard" type="button">
+                <div class="mode-btn-icon">📇</div>
+                <div class="mode-btn-text">
+                  <div class="mode-btn-label">Flashcards</div>
+                  <div class="mode-btn-subtitle">Fast concept revision</div>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <div class="selection-section">
+            <label class="selection-label">Difficulty</label>
+            <div class="difficulty-grid">
+              <button class="difficulty-btn easy" data-difficulty="easy" type="button">
+                Easy
+              </button>
+              <button class="difficulty-btn medium" data-difficulty="medium" type="button">
+                Medium
+              </button>
+              <button class="difficulty-btn hard" data-difficulty="hard" type="button">
+                Hard
+              </button>
+            </div>
+          </div>
+
+          <button id="startBtn" class="primary-btn" type="button" disabled>
+            Start learning
+          </button>
+        </section>
+      </section>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/subject.js"></script>
+  </main>
+</body>
+</html>
