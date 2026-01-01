@@ -31,12 +31,15 @@ def create_app():
     CORS(app)
 
     # ---------------- API BLUEPRINTS ----------------
+    # These are BACKEND APIs (NOT pages)
+
     app.register_blueprint(auth_bp, url_prefix="/auth")
     app.register_blueprint(quiz_bp, url_prefix="/quiz")
 
-    # These blueprints already define their own prefixes
-    app.register_blueprint(student_bp)   # /students/*
-    app.register_blueprint(subject_bp)   # /subjects/*
+    # These blueprints already define their own prefixes internally:
+    # e.g. /students/*, /subjects/*
+    app.register_blueprint(student_bp)
+    app.register_blueprint(subject_bp)
 
     # Admin APIs
     app.register_blueprint(admin_bp, url_prefix="/admin")
@@ -70,6 +73,7 @@ def create_app():
     def serve_admin_login():
         return send_from_directory("frontend/pages", "admin-login.html")
 
+    # ✅ ADMIN DASHBOARD PAGE (FRONTEND)
     @app.route("/admin")
     def serve_admin_dashboard():
         return send_from_directory("frontend/pages", "admin.html")
@@ -98,12 +102,12 @@ def create_app():
     return app
 
 
-# ✅ THIS IS REQUIRED FOR GUNICORN
+# ---------------- GUNICORN ENTRY POINT ----------------
+# This object is what gunicorn will import: `gunicorn app:app`
 app = create_app()
 
-
-# ---------------- LOCAL DEV ONLY ----------------
 if __name__ == "__main__":
+    # Local development entry point
     init_db()
     seed_initial_data()
     app.run(host="0.0.0.0", port=5000, debug=True)
