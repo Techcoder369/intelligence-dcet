@@ -20,3 +20,5 @@ numpy==1.26.3
 # ---------------- Utils ----------------
 python-dotenv==1.0.0
 requests==2.31.0
+groq 
+PyPDF2 
