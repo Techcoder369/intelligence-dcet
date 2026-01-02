@@ -15,7 +15,7 @@ psycopg2-binary==2.9.9
 # ---------------- AI / ML ----------------
 faiss-cpu==1.13.2
 numpy==1.26.3
-scikit-learn==1.4.0
+
 
 # ---------------- Utils ----------------
 python-dotenv==1.0.0
