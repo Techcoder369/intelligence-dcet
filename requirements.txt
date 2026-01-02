@@ -10,7 +10,7 @@ bcrypt==4.1.2
 
 # ---------------- Database ----------------
 SQLAlchemy==2.0.44
-
+psycopg2-binary
 
 # ---------------- AI / ML ----------------
 faiss-cpu==1.13.2
