@@ -23,25 +23,16 @@ def create_app():
     )
 
     # ---------------- CONFIG ----------------
-    app.config["SECRET_KEY"] = os.getenv(
-        "SESSION_SECRET", "dcet-quiz-secret-key-2024"
-    )
+    app.config["SECRET_KEY"] = os.getenv("SESSION_SECRET")
     app.config["MAX_CONTENT_LENGTH"] = 50 * 1024 * 1024
 
     CORS(app)
 
     # ---------------- API BLUEPRINTS ----------------
-    # These are BACKEND APIs (NOT pages)
-
     app.register_blueprint(auth_bp, url_prefix="/auth")
     app.register_blueprint(quiz_bp, url_prefix="/quiz")
-
-    # These blueprints already define their own prefixes internally:
-    # e.g. /students/*, /subjects/*
     app.register_blueprint(student_bp)
     app.register_blueprint(subject_bp)
-
-    # Admin APIs
     app.register_blueprint(admin_bp, url_prefix="/admin")
 
     # ---------------- FRONTEND PAGES ----------------
@@ -73,7 +64,6 @@ def create_app():
     def serve_admin_login():
         return send_from_directory("frontend/pages", "admin-login.html")
 
-    # ✅ ADMIN DASHBOARD PAGE (FRONTEND)
     @app.route("/admin")
     def serve_admin_dashboard():
         return send_from_directory("frontend/pages", "admin.html")
@@ -102,12 +92,20 @@ def create_app():
     return app
 
 
-# ---------------- GUNICORN ENTRY POINT ----------------
-# This object is what gunicorn will import: `gunicorn app:app`
+# =====================================================
+# GUNICORN ENTRY POINT (PRODUCTION)
+# =====================================================
 app = create_app()
 
-if __name__ == "__main__":
-    # Local development entry point
+# Initialize DB ONCE at startup (Railway safe)
+with app.app_context():
     init_db()
     seed_initial_data()
-    app.run(host="0.0.0.0", port=5000, debug=True)
+
+
+# =====================================================
+# LOCAL DEVELOPMENT ONLY
+# =====================================================
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
