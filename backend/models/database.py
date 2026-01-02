@@ -1,12 +1,8 @@
-"""
-Database models for Intelligence DCET Quiz Generator
-PostgreSQL (pgAdmin) Ready
-"""
+
 
 import os
 import enum
 from datetime import datetime
-from dotenv import load_dotenv
 
 from sqlalchemy import (
     create_engine, Column, Integer, String, Text,
@@ -17,28 +13,27 @@ from sqlalchemy.orm import (
 )
 
 # ======================================================
-# ENV + DATABASE
+# DATABASE (RAILWAY ONLY)
 # ======================================================
-load_dotenv()
-
 DATABASE_URL = os.getenv("DATABASE_URL")
+
 if not DATABASE_URL:
     raise RuntimeError("❌ DATABASE_URL not set")
 
-# PostgreSQL engine (pgAdmin compatible)
 engine = create_engine(
     DATABASE_URL,
-    pool_pre_ping=True,   # reconnect if connection drops
-    echo=False
+    pool_pre_ping=True,
+    echo=False,
 )
 
 SessionLocal = sessionmaker(
     autocommit=False,
     autoflush=False,
-    bind=engine
+    bind=engine,
 )
 
 Base = declarative_base()
+
 
 # ======================================================
 # ENUMS
